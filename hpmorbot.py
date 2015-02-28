@@ -3,6 +3,7 @@ import time
 import httplib
 import sys
 
+# returns the HTTP status code of `host` at `path`
 def get_status_code(host, path="/"):
     try:
         conn = httplib.HTTPConnection(host)
@@ -23,17 +24,14 @@ r.login(username, password)
 subreddit = r.get_subreddit('hpmor')
 
 while True:
-
 	status_code = get_status_code('hpmor.com', '/chapter/' + chapter)
-
-	if status_code == 200 or True:
-
+	if status_code == 200:
+		# New chapter is up. Post it to the subreddit and terminate.
 		r.submit(subreddit, 'Chapter ' + chapter, 'url=hpmor.com/chapter/' + chapter)
 		print 'Posted link to /r/hpmor! Free karma inbound!'
 		break
-
 	else:
-
+		# New chapter isn't up yet. Keep trying.
 		print 'Nothing posted yet. Status code:', status_code, 'at', time.time()
-		time.sleep(0.9)
+		time.sleep(0.6)
 
