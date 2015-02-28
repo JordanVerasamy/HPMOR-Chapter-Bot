@@ -27,7 +27,7 @@ while True:
 	status_code = get_status_code('hpmor.com', '/chapter/' + chapter)
 	if status_code == 200:
 		# New chapter is up. Post it to the subreddit and terminate.
-		r.submit(subreddit, 'Chapter ' + chapter, 'url=hpmor.com/chapter/' + chapter)
+		r.submit(subreddit, 'Chapter ' + chapter, url='hpmor.com/chapter/' + chapter)
 		print 'Posted link to /r/hpmor! Free karma inbound!'
 		break
 	else:
