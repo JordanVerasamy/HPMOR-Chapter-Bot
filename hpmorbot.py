@@ -32,6 +32,6 @@ while True:
 		break
 	else:
 		# New chapter isn't up yet. Keep trying.
-		print 'Nothing posted yet. Status code:', status_code, 'at', time.time()
-		time.sleep(0.6)
+		print 'Nothing posted yet. Status code:', status_code, 'at', time.time(), 'seconds.'
+		time.sleep(1.0)
 
